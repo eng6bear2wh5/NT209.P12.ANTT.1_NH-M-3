@@ -6,7 +6,7 @@ int bitOr(int x, int y)
 
 int negative(int x)
 {
-    return ~x+1;
+    return ~x+1; // Thể hiện số bù 2 của x bằng cách lật hết các bit của x(số bù 1) và OR với 1;
 }
 
 int flipByte(int x, int n) {
@@ -19,13 +19,16 @@ int mod2n(int x, int n)
 }
 
 unsigned int divpw2(unsigned int x, int n) {
-    unsigned int mask = (n >> 31); // Create mask to check if n is negative
-    unsigned int abs_n = (n ^ mask) + (~mask+1); // Get absolute value of n
+    unsigned int mask = (n >> 31);
+    unsigned int abs_n = (n ^ mask) + (~mask+1); 
     return (x << (mask & abs_n)) >> (~mask & abs_n);
 }
 
 int isEqual(int x, int y) {
-    return !(x^y);
+    return !(x^y); 
+    /*So sánh từng bit dựa trên bảng chân trị của XNor:     y/x 0   1
+                                                            0   1   0    
+                                                            1   0   1       */
 }
 
 int is16x(int x) {
@@ -33,7 +36,8 @@ int is16x(int x) {
 }
 
 int isPositive(int x) {
-    return !(x >> 31) & !(!x); // dịch trái 31(đối với kiểu int là 32 bit) bit của x, !(!x) để xác định x có là 0 hay không
+    // dịch trái 31(đối với kiểu int là 32 bit) bit của x để xác định bit dấu của x, !(!x) để xác định x có là 0 hay không (cần điều kiện x khác 0 bởi 0 là số ko âm cũng không dương);
+    return !(x >> 31) & !(!x); // kết quả trả về sẽ là 1 (đảo nghịch từ bit dấu dương là 0 để thỏa mãn output);
 }
 
 int isGE2n(int x, int n) {
