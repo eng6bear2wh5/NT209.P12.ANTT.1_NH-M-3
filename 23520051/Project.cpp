@@ -1,7 +1,9 @@
 #include <stdio.h>
+
+//1.1: Thực hiện | bit 2 số nguyên (không dùng | chỉ dùng & và ~)
 int bitOr(int x, int y)
 {
-    return(~(~x & ~y));
+    return(~(~x & ~y)); //Biến đổi bảng chân trị của AND sang bảng chân trị của OR
 }
 
 int negative(int x)
@@ -25,18 +27,20 @@ int mod2n(int x, int n)
     return x & ((1<< n) + (1 + ~1));
 }
 
+//1.5: Tính kết quả của x/2^n với mọi giá trị của n (-31 <= x <= 31)
 unsigned int divpw2(unsigned int x, int n) {
-    unsigned int mask = (n >> 31);
-    unsigned int abs_n = (n ^ mask) + (~mask+1);
-    return (x << (mask & abs_n)) >> (~mask & abs_n);
+    unsigned int mask = (n >> 31); // Tạo mask kiểm tra dấu của n
+    unsigned int abs_n = (n ^ mask) + (~mask + 1); // Tính giá trị tuyệt đối của n
+    return (x << (mask & abs_n)) >> (~mask & abs_n); // Dịch trái hoặc dịch phải bit của x tùy theo dấu của n
 }
 
 int isEqual(int x, int y) {
     return !(x^y); //Mô phỏng và trả về kết quả như cổng logic XNor
 }
 
+//2.2: Kiểm tra số nguyên x có chia hết cho 16 hay không?
 int is16x(int x) {
-    return !((x & 10000) ^ x);;
+    return !((x & 10000) ^ x); //kiểm tra x AND với 16(dạng nhị phân) có bằng chính nó hay không
 }
 
 int isPositive(int x) {
