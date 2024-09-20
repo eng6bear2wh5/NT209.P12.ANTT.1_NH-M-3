@@ -32,15 +32,7 @@ unsigned int divpw2(unsigned int x, int n) {
 }
 
 int isEqual(int x, int y) {
-<<<<<<< HEAD
     return !(x^y); //Mô phỏng và trả về kết quả như cổng logic XNor
-
-=======
-    return !(x^y);
-    /*So sánh từng bit dựa trên bảng chân trị của XNor:     y/x 0   1
-                                                            0   1   0
-                                                            1   0   1       */
->>>>>>> 500bad8078748e93454e18cd687432f7d5c29f85
 }
 
 int is16x(int x) {
