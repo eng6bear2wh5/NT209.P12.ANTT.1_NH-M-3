@@ -19,8 +19,8 @@ int flipByte(int x, int n) {
 int mod2n(int x, int n)
 {
     // 1.4: Tính kết quả phép chia lấy dư x % 2^n
-    // Giải thích: Ta thấy số dư khi chia cho một số n sẽ nằm trong khoảng [0,n-1), Vậy khi chia cho 2^n thì số dư sẽ nằm trong khoảng (0,2^n -1).
-    // Khoảng giá trị ở trên có thể biểu diễn với số lương bit = n.
+    // Giải thích: Ta thấy số dư khi chia cho một số n sẽ nằm trong khoảng [0,n-1), Vậy khi chia cho 2^n thì số dư sẽ nằm trong khoảng [0,2^n -1).
+    // Khoảng giá trị ở trên có thể biểu diễn với số lượng bit = n.
     // Vậy để tìm được số dư ta lấy x & n bit 1. Các bit phía trước sẽ bằng 0. ((1<< n) + (1 + ~1))
     return x & ((1<< n) + (1 + ~1));
 }
@@ -49,7 +49,7 @@ int isPositive(int x) {
 
 int isGE2n(int x, int n) {
     // 2.4: Trả về 1 nếu x >= 2^n
-    // Giải thích: Để xét x >= 2^n, ta lấy x - 2^n (x + bù 2 của 2^n)
+    // Giải thích: Để xét x có lớn hơn hoặc bằng 2^n hay không, ta lấy x - 2^n (x + bù 2 của 2^n)
     // Nếu x lớn hơn hoặc bằng 2^n thì bit dấu bằng 0, ngược lại bit dấu bằng 1.
     // Ta lấy bit dấu xor với 1 thì sẽ trả về giá trị theo yêu cầu.
     return ((x + (~(1 << n)+1)) >> 31) & 1 ^ 1;
