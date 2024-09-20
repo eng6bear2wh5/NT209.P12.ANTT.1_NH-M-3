@@ -6,7 +6,7 @@ int bitOr(int x, int y)
 
 int negative(int x)
 {
-    return ~x+1; // Thể hiện số bù 2 của x bằng cách lật hết các bit của x(số bù 1) và OR với 1;
+    return ~x+1; //toán tử ~để lật bit của x
 }
 
 int flipByte(int x, int n) {
@@ -25,10 +25,8 @@ unsigned int divpw2(unsigned int x, int n) {
 }
 
 int isEqual(int x, int y) {
-    return !(x^y); 
-    /*So sánh từng bit dựa trên bảng chân trị của XNor:     y/x 0   1
-                                                            0   1   0    
-                                                            1   0   1       */
+    return !(x^y); //Mô phỏng và trả về kết quả như cổng logic XNor
+
 }
 
 int is16x(int x) {
@@ -36,7 +34,7 @@ int is16x(int x) {
 }
 
 int isPositive(int x) {
-    // dịch trái 31(đối với kiểu int là 32 bit) bit của x để xác định bit dấu của x, !(!x) để xác định x có là 0 hay không (cần điều kiện x khác 0 bởi 0 là số ko âm cũng không dương);
+    
     return !(x >> 31) & !(!x); // kết quả trả về sẽ là 1 (đảo nghịch từ bit dấu dương là 0 để thỏa mãn output);
 }
 
