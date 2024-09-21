@@ -6,25 +6,23 @@ int bitOr(int x, int y)
     return(~(~x & ~y)); //Biến đổi bảng chân trị của AND sang bảng chân trị của OR
 }
 
+// 1.2: Tính giá trị của -x mà không dùng dấu -
 int negative(int x)
 {
     return ~x+1; //toán tử ~để lật bit của x
 }
 
-int flipByte(int x, int n) {
-    // 1.3: Lật byte thứ n của số nguyên x
-    // Giải thích: Tạo 1 mask bằng cách lấy 0xFF (11111111) cho dịch trái 8*n bit (0 <= n <= 3)
-    // Thực hiện phép XOR để lật bit
-    return x ^ (0xFF << (n << 3));
+// 1.3: Lật byte thứ n của số nguyên x
+int flipByte(int x, int n)
+{
+    return x ^ (0xFF << (n << 3)); // x XOR với 0xFF được dịch trái 8*n bit (0 <= n <= 3)
 }
 
+// 1.4: Tính kết quả phép chia lấy dư x % 2^n
 int mod2n(int x, int n)
 {
-    // 1.4: Tính kết quả phép chia lấy dư x % 2^n
-    // Giải thích: Ta thấy số dư khi chia cho một số n sẽ nằm trong khoảng [0,n-1), Vậy khi chia cho 2^n thì số dư sẽ nằm trong khoảng [0,2^n -1).
-    // Khoảng giá trị ở trên có thể biểu diễn với số lượng bit = n.
-    // Vậy để tìm được số dư ta lấy x & n bit 1. Các bit phía trước sẽ bằng 0. ((1<< n) + (1 + ~1))
-    return x & ((1<< n) + (1 + ~1));
+    int n_bit_1 = ((1<< n) + (1 + ~1)); // Tạo ra mask với n bit 1
+    return x & n_bit_1; // x AND với n bit 1 sẽ ra được số dư
 }
 
 //1.5: Tính kết quả của x/2^n với mọi giá trị của n (-31 <= x <= 31)
@@ -34,6 +32,7 @@ unsigned int divpw2(unsigned int x, int n) {
     return (x << (mask & abs_n)) >> (~mask & abs_n); // Dịch trái hoặc dịch phải bit của x tùy theo dấu của n
 }
 
+//2.1: Kiểm tra 2 số x và y có bằng nhau hay không?
 int isEqual(int x, int y) {
     return !(x^y); //Mô phỏng và trả về kết quả như cổng logic XNor
 }
@@ -43,17 +42,16 @@ int is16x(int x) {
     return !((x & 10000) ^ x); //kiểm tra x AND với 16(dạng nhị phân) có bằng chính nó hay không
 }
 
+//2.3: Trả về 1 nếu x > 0
 int isPositive(int x) {
-    
+
     return !(x >> 31) & !(!x); // kết quả trả về sẽ là 1 (đảo nghịch từ bit dấu dương là 0 để thỏa mãn output);
 }
 
+// 2.4: Trả về 1 nếu x >= 2^n
 int isGE2n(int x, int n) {
-    // 2.4: Trả về 1 nếu x >= 2^n
-    // Giải thích: Để xét x có lớn hơn hoặc bằng 2^n hay không, ta lấy x - 2^n (x + bù 2 của 2^n)
-    // Nếu x lớn hơn hoặc bằng 2^n thì bit dấu bằng 0, ngược lại bit dấu bằng 1.
-    // Ta lấy bit dấu xor với 1 thì sẽ trả về giá trị theo yêu cầu.
-    return ((x + (~(1 << n)+1)) >> 31) & 1 ^ 1;
+
+    return ((x + (~(1 << n)+1)) >> 31) & 1 ^ 1; // Lấy bit dấu của kết quả phép tính (x - 2^n) XOR với 1
 }
 
 int main()
