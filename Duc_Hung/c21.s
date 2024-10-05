@@ -14,7 +14,7 @@
      subl $1,(output)        # trừ đi 1 do không tính NULL
      
      # Ngoài ra ta có thể gộp 2 dòng trên thành một lệnh như sau: 
-     # addl $47, (output)   cộng dữ liệu trong output (độ dài của chuỗi rs tính cả NULL) với 47 để chuyển từ số sang ký tự số của số đó được trừ đi 1 (bỏ NULL)
+     # addl $47,(output)     # cộng dữ liệu trong output (độ dài của chuỗi rs tính cả NULL) với 47 để chuyển từ số sang ký tự số của số đó được trừ đi 1 (bỏ NULL)
  
 movl $4, %eax                # sys_write
 movl $1, %ebx                # std_out
