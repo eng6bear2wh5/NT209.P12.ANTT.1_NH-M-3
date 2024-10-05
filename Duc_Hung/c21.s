@@ -27,7 +27,7 @@ int $0x80                    # call kernel
 # xuống dòng
 movl $4, %eax                # sys_write
 movl $1, %ebx                # std_out
-movl $newline, %ecx          # địa chỉ ô nhớ output
+movl $newline, %ecx          # địa chỉ ô nhớ newline
 movl $1, %edx                # độ dài sẽ xuất ra (bytes)
 int $0x80                    # call kernel
 
